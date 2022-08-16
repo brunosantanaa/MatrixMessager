@@ -1,6 +1,3 @@
-const options_type = {
-
-}
 const attribut_type = {
   content: "",
   name: "",
