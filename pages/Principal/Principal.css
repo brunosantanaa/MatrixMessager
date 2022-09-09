@@ -1,0 +1,7 @@
+.principal-container {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  align-items: stretch;
+  width: 100%;
+}

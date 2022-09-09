@@ -1,0 +1,30 @@
+.conversations-container {
+  width: 35%;
+  max-width: 450px;
+  background-color: rgb(45, 45, 60);
+  border-right: solid 1px rgb(68, 68, 81);
+}
+.conversations-header {
+  display: flex;
+  flex-direction: row;
+  height: 50px;
+  background-color: rgb(55,55,65);
+  width: 100%;
+  align-items: center;
+  justify-content: flex-start;
+}
+.conversations-profile-picture {
+  width: 40px;
+  border-radius: 50%;
+  margin: 5px;
+}
+.conversations-user-logout{
+  font-size: 25px;
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 20px;
+}
+.conversations-user-logout i{
+  cursor: pointer;
+}

@@ -1,0 +1,25 @@
+.listchats-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  padding: 5px 10px;
+
+}
+.listchats-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  flex: 0.95;
+  border-bottom: solid 1px rgb(68, 68, 81);
+  padding: 8px 0px;
+}
+.listchats-title {
+  font-weight:400;
+  font-size: 18px;
+  
+}
+.listchats-msg {
+  font-size: 16px;
+}

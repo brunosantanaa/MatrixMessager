@@ -1,0 +1,28 @@
+.envoyer-container {
+  background-color: rgb(55, 55, 65);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 45px;
+  width: 100%;
+}
+.envoyer-input {
+  padding: 6px;
+  padding-left: 15px;
+  border: none;
+  border-radius: 5px;
+  flex: 1;
+  margin: 10px;
+}
+.envoyer-button {
+  background-color: rgb(55, 55, 65);
+  min-width: 30px !important;
+  height: 30px;
+  border-radius: 50%;
+  padding: 0;
+  margin: 10px;
+}
+.envoyer-button:hover {
+  background-color: rgb(39, 39, 46);
+  
+}
