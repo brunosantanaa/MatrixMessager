@@ -8,11 +8,14 @@
 }
 .envoyer-input {
   padding: 6px;
-  padding-left: 15px;
-  border: none;
-  border-radius: 5px;
+  padding-left: 25px;
+  border: none !important;
+  border-radius: 10px !important;
   flex: 1;
   margin: 10px;
+  margin-left: 30px;
+  background-color:rgb(67, 67, 95) !important;
+  color: rgb(250,250, 250);
 }
 .envoyer-button {
   background-color: rgb(55, 55, 65);

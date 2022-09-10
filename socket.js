@@ -1,4 +1,4 @@
-let socket = new WebSocket("wss://192.168.64.2/MatrixMessagerBack/socket.js");
+let socket = new WebSocket("ws://localhost/MatrixMessagerBack/socket.js");
 socket.onopen = function(e) {
   alert("[open] Connection established");
   alert("Sending to server");

@@ -1,13 +1,18 @@
-import { div, p, h4 } from '../../src/html.js';
+import { div, p, h4, import_link } from '../../src/html.js';
+
+import_link('./components/message/message.css');
 
 export default function Message(props){
   return (
     div({
-      class: 'message-container message-'+props.who,
+      class: 'message-container message-'+(props.who != 'moi'? 'general' : 'moi'),
       content: [
-        h4({class: 'message-name', content: props.name}),
+        div({class: 'message-info', content: [
+          p({class: 'message-name', content: props.name}),
+          p({class: 'message-time', content: props.time})
+        ]}),
         p({class: 'message-content', content: props.message}),
-        p({class: 'message-time', content: props.time})
+        
       ]
     })
   )

@@ -7,7 +7,7 @@ export default function Envoyer() {
     div({
       class: 'envoyer-container',
       content: [
-        input({type: 'text', class: 'envoyer-input', placeholder: 'Message'}),
+        input({type: 'text', class: 'envoyer-input', placeholder: 'Taper un Message'}),
         button({class: 'envoyer-button', content: '<i class="fa fa-paper-plane"></i>'})
       ]
     })

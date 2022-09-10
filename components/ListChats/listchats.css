@@ -4,7 +4,10 @@
   align-items: center;
   justify-content: space-around;
   padding: 5px 10px;
-
+  cursor: pointer;
+}
+.listchats-container:hover {
+  background-color: rgb(55,55,65);
 }
 .listchats-content {
   display: flex;
