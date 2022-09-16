@@ -1,0 +1,28 @@
+.inscription-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.inscription-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between !important;
+  align-items: stretch;
+  border: none;
+  border-radius: 20px;
+  min-height: 200px;
+  padding: 20px 40px;
+  margin-top: 20px;
+  border-radius: 20px;
+  background-color: rgb(55, 55, 65);
+  box-shadow: 0 0 10px rgba(52, 38, 206, 0.5);
+}
+button:disabled {
+  background-color: gray;
+  color:rgb(55, 55, 65);
+  cursor: not-allowed;
+}
+.not_valid{
+  border: solid 2px red !important;
+}

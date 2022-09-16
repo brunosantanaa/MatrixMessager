@@ -9,8 +9,9 @@
 <body> 
   <div id="root"></div>
   <script>
-      var host = 'ws://localhost:12345/socket.php';
+      var host = 'ws://localhost:1245/MatrixMessagerBack/teste_socket.php';
       var socket = new WebSocket(host);
+      socket.send('Vai');
       socket.onmessage = function(e) {
           document.getElementById('root').innerHTML = e.data;
       };

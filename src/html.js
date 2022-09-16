@@ -14,7 +14,7 @@ const attribut_type = {
   disabled: false,
   onclick: {f: undefined, a: undefined},
   orderly: false,
-  onkeyup: "",
+  onkeyup: {f: undefined, a: undefined},
   style : ""
 }
 
@@ -35,6 +35,33 @@ function count_elements(v) {
   });
   return (cnt < 0) ? 0 : cnt;
 }
+export function gotoPage(element, pageComponent) {
+  let el = document.getElementById(element);
+  el.innerHTML = '';
+  html_js(element, [pageComponent]);
+}
+export function updateElement(element, content={attribute: '', value: ''}) {
+  let el = document.getElementById(element);
+  if (content.attribute == undefined) {
+    if(content.value != undefined) {
+      el.innerHTML = content.value;
+    }else{
+      el.innerHTML = content;
+    }
+  } else {
+    switch (content.attribute) {
+      case 'disabled':
+        el.disabled = content.value;
+        break;
+      case 'checked':
+        el.checked = content.value;
+        break;
+      default:
+        el.setAttribute(content.attribute, content.value);  
+        break;
+    }
+  }
+}
 export function createComponent(element, attr = attribut_type) {
   var el = document.createElement(element);
   if (attr.name != undefined) {
@@ -43,7 +70,7 @@ export function createComponent(element, attr = attribut_type) {
   if (attr.id != undefined) {
     el.id = attr.id;
   }
-  
+  if (attr.value != "" && attr.value != undefined) el.value = attr.value
   el.setAttribute('class', attr.class);
   if (element == 'input') {
     el.setAttribute('placeholder', attr.placeholder);
@@ -58,6 +85,13 @@ export function createComponent(element, attr = attribut_type) {
       if(attr.onclick.f != undefined)
         (attr.onclick.f)(attr.onclick.a)
       else (attr.onclick)();
+    });
+  }  
+  if(attr.onkeyup != undefined && attr.onkeyup != "") {
+    el.addEventListener('keyup', (e)=>{
+      if(attr.onkeyup.f != undefined)
+        (attr.onkeyup.f)(attr.onkeyup.a)
+      else (attr.onkeyup)();
     });
   }
   if(attr.src!="") el.src = attr.src;

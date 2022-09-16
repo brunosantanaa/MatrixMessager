@@ -6,7 +6,6 @@ import_link('./components/EnParlant/enParlant.css');
 
 export default function EnParlant(props){
   let messages = [];
-  console.log(props);
   return(
     div({
       class: 'en-parlant-container',
