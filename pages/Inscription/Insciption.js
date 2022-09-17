@@ -61,7 +61,7 @@ async function cadastre(value){
   req.conf_email = document.getElementById('inscription_conf_courriel').value;
   req.password = document.getElementById('inscription_password').value;
   req.conf_password = document.getElementById('inscription_conf_password').value;
-  req.nom = document.getElementById('inscription_nom').value;
+  req.name = document.getElementById('inscription_nom').value;
   var result = await request('POST', '/cadastre', req);  
   console.log(result);
   gotoPage('root', Login());
