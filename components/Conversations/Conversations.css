@@ -11,6 +11,12 @@
   background-color: rgb(55,55,65);
   width: 100%;
   align-items: center;
+  justify-content: flex-end;
+}
+.container-img {
+  flex: 1;
+  display: flex;
+  align-items: center;
   justify-content: flex-start;
 }
 .conversations-profile-picture {
@@ -19,14 +25,18 @@
   margin: 5px;
 }
 .conversations-user-logout{
-  font-size: 25px;
-  flex: 1;
-  display: flex;
-  justify-content: flex-end;
-  padding-right: 20px;
-}
-.conversations-user-logout i{
   cursor: pointer;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  padding: 10px;
+  border-radius: 50%;
+  min-width: 20px;
+}
+.conversations-user-logout:hover {
+  background-color: rgb(89, 39, 46);
 }
 .conversationcontainer-principal {
   flex: 1;

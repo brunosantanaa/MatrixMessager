@@ -12,7 +12,9 @@ export default function Conversations(props) {
   let profil = (typeof props.profile === "undefined") ? './static/img/profil.png' : props.profile;
   let content = [
     div({class: 'conversations-header', content: [
-      img({class: 'conversations-profile-picture', src: profil}),
+      div({class: 'container-img', content: [
+        img({class: 'conversations-profile-picture', src: profil})
+      ]}),
       div({class: 'conversations-user-logout', content: '<i class="fa fa-sign-out"></i>', onclick: exit}),
     ]})];
   props.conversations.forEach(e => {
