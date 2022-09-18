@@ -11,8 +11,9 @@ async function loginAction(){
   var email = document.getElementById('login').value;
   var password = document.getElementById('password').value;
   var resp = await request('POST', '/login', {email: email, password: password});
-  
-  gotoPage('root', Principal());
+  if(resp.token) {
+    gotoPage('root', await Principal(resp));
+  }
 }
 function inscriptionAction() {
   gotoPage('root', Inscription());
