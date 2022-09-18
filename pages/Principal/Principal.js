@@ -25,7 +25,7 @@ export default async function Principal(props) {
       class: 'principal-container', 
       content: [
         Conversations(content),
-        EnParlant(content.conversations[0]),  
+        await EnParlant(content.conversations[0]),  
       ]
     })
     
