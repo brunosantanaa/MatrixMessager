@@ -4,9 +4,12 @@ import { div, img, import_link } from "../../src/html.js";
 import_link('./components/ListChats/listchats.css');
 
 export default function ListChats(props) {
-  let msg = props.messages.at(-1).Content;
-  let dt = dateFormat(props.messages.at(-1).Date);
-  
+  let msg = '';
+  let dt = '';
+  if (msg.length > 0) {
+    msg = props.messages.at(-1).Content;
+    dt = dateFormat(props.messages.at(-1).Date);
+  }
   return(
     div({
       class: 'listchats-container',
