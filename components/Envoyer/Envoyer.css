@@ -3,19 +3,24 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
-  height: 45px;
+  min-height: 60px;
   width: 100%;
 }
 .envoyer-input {
   padding: 6px;
   padding-left: 25px;
   border: none !important;
-  border-radius: 10px !important;
+  border-radius: 8px !important;
   flex: 1;
   margin: 10px;
   margin-left: 30px;
   background-color:rgb(67, 67, 95) !important;
   color: rgb(250,250, 250);
+  min-height: 25px;
+}
+.envoyer-input:focus {
+  outline: none !important;
+  border: 1px solid rgb(95, 80, 250) !important;
 }
 .envoyer-button {
   background-color: rgb(55, 55, 65);
