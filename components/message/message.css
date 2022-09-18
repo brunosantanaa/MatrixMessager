@@ -5,10 +5,12 @@
 .message-general{
   align-self: flex-start;
   background-color: rgb(32, 44, 51);
+  max-width: 40%;
 }
 .message-moi{
   align-self: flex-end;
   background-color:  rgb(0, 92, 75);
+  max-width: 40%;
 }
 
 .message-info{
