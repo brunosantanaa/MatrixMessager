@@ -66,9 +66,12 @@ async function cadastre(value){
   console.log(result);
   gotoPage('root', Login());
 }
-
+function goHome(){
+  gotoPage('root', Login());
+}
 export default function Inscription(){
   return(div({class: 'inscription-content', content: [
+    div({class: 'bt-return', content: '<i class="fa fa-arrow-left"></i>', onclick: goHome}),
     Logo({width: '150px'}),
     div({class: 'inscription-container', content: [
       input({id: 'inscription_nom', placeholder: 'Nom', type: 'text', onkeyup: {f: validation, a: 'inscription_nom'}}),
