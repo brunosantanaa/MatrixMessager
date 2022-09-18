@@ -19,7 +19,8 @@ export default function Conversations(props) {
       div({class: 'container-img', content: [
         img({class: 'conversations-profile-picture', src: profil})
       ]}),
-      div({class: 'conversations-user-logout', content: '<i class="fa fa-sign-out"></i>', onclick: exit}),
+      div({class: 'conversations-bt conversations-users-list', content: '<i class="fa fa-users"></i>'}),
+      div({class: 'conversations-bt conversations-user-logout', content: '<i class="fa fa-sign-out"></i>', onclick: exit}),
     ]})];
   props.conversations.forEach(e => {
     content.push(ListChats(e));

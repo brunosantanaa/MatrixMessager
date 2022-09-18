@@ -24,7 +24,7 @@
   border-radius: 50%;
   margin: 5px;
 }
-.conversations-user-logout{
+.conversations-bt{
   cursor: pointer;
   font-size: 20px;
   display: flex;
@@ -37,6 +37,9 @@
 }
 .conversations-user-logout:hover {
   background-color: rgb(89, 39, 46);
+}
+.conversations-users-list:hover {
+  background-color: rgb(39, 39, 46);
 }
 .conversationcontainer-principal {
   flex: 1;
