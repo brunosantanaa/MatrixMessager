@@ -62,7 +62,7 @@ async function cadastre(value){
   req.password = document.getElementById('inscription_password').value;
   req.conf_password = document.getElementById('inscription_conf_password').value;
   req.name = document.getElementById('inscription_nom').value;
-  var result = await request('POST', '/cadastre', req);  
+  var result = await request('POST', '/user/cadastre', req);  
   console.log(result);
   gotoPage('root', Login());
 }

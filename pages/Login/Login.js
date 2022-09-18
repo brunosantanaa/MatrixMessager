@@ -11,7 +11,7 @@ import { setCookie } from '../../src/cookies.js';
 async function loginAction(){
   var email = document.getElementById('login').value;
   var password = document.getElementById('password').value;
-  var resp = await request('POST', '/login', {email: email, password: password});
+  var resp = await request('POST', '/user/login', {email: email, password: password});
   if(resp.token) {
     setCookie("token", resp.token, 1);
     gotoPage('root', await Principal(resp));
