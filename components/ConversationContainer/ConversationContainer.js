@@ -1,26 +1,21 @@
+import { request } from "../../api.js";
+import { getCookie } from "../../src/cookies.js";
 import { div, import_link } from "../../src/html.js";
 import Message from "../message/message.js";
 
 import_link('./components/ConversationContainer/conversationcontainer.css');
-function getUser(user) {
-  let resp = "";
-  if(user === "moi") {
-    //request with token
-    resp = {UserID: 1, Name: "Bruno"};
-  } else {
-    //request with UserID
-    resp = {UserID: 2, Name: "Teste"};
-  }
-  return resp;
+async function getMoi() {
+  let resp = await request('POST', '/user/whoami', {token: getCookie("token")});
+  return resp[0];
 }
-export default function ConversationContainer(props) {
+export default async function ConversationContainer(props) {
   let content = [];
-  let moi = getUser('moi');
+  let moi = await getMoi();
   props.forEach(m => {
     let who = (m.User == moi.UserID) ? 'moi' : '';
     m.who = who;
-    m.User = getUser(m.User);
-    content.push(Message(m))
+    console.log(moi.UserID);
+    content.push(Message(m));
   });
   return(
     div({
