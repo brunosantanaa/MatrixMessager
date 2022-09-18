@@ -1,12 +1,16 @@
+import { request } from '../../api.js';
 import Login from '../../pages/Login/Login.js';
-import { delCookie } from '../../src/cookies.js';
+import { delCookie, getCookie } from '../../src/cookies.js';
 import { div, gotoPage, img, import_link } from '../../src/html.js';
 import ListChats from '../ListChats/ListChats.js';
 
 import_link('./components/Conversations/Conversations.css');
-function exit(){
-  delCookie("token");
-  gotoPage('root', Login());
+async function exit(){
+  var resp = await request('POST', '/user/logout', {token: getCookie("token")});
+  if (resp.logout != undefined) {
+    delCookie("token");
+    gotoPage('root', Login());
+  }  
 }
 export default function Conversations(props) {
   let profil = (typeof props.profile === "undefined") ? './static/img/profil.png' : props.profile;
