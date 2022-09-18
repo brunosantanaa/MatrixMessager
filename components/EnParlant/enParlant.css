@@ -29,26 +29,3 @@
   margin: 0px;
   justify-self: center;
 }
-.conversationcontainer-principal {
-  flex: 1;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-  font-size: 12px;
-  background-size: 300% 300%;
-  background-image: linear-gradient(
-        -45deg, 
-        rgba(95, 80, 250, 1) 0%, 
-        rgb(83, 70, 222) 25%, 
-        rgb(64, 64, 140) 51%, 
-        rgb(93, 79, 213) 100%
-  );  
-  animation: AnimateBG 20s ease infinite;
-}
-@keyframes AnimateBG { 
-  0%{background-position:0% 50%}
-  50%{background-position:100% 50%}
-  100%{background-position:0% 50%}
-}

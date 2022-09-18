@@ -6,12 +6,14 @@ import Logo from '../../components/Logo/Logo.js';
 import { request } from "../../api.js";
 import Principal from '../Principal/Principal.js';
 import Inscription from '../Inscription/Insciption.js';
+import { setCookie } from '../../src/cookies.js';
 
 async function loginAction(){
   var email = document.getElementById('login').value;
   var password = document.getElementById('password').value;
   var resp = await request('POST', '/login', {email: email, password: password});
   if(resp.token) {
+    setCookie("token", resp.token, 1);
     gotoPage('root', await Principal(resp));
   }
 }

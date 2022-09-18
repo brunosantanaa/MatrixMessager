@@ -5,7 +5,7 @@ import Envoyer from '../Envoyer/Envoyer.js';
 import_link('./components/EnParlant/enParlant.css');
 
 export default function EnParlant(props){
-  let messages = [];
+  let messages = props.messages;
   return(
     div({
       class: 'en-parlant-container',
@@ -18,7 +18,7 @@ export default function EnParlant(props){
           ]})
           
         ]}),
-        ConversationContainer(),
+        ConversationContainer(messages),
         Envoyer()
       ]
     }));
