@@ -80,23 +80,11 @@ export function updateElement(element, content={attribute: '', value: ''}) {
 }
 export function createComponent(element, attr = attribut_type) {
   var el = document.createElement(element);
-  
-  if (attr.name != undefined) {
-    el.setAttribute('name', attr.name);
-  }
-  if (attr.id != undefined) {
-    el.id = attr.id;
-  }
-  if (attr.value != "" && attr.value != undefined) el.value = attr.value
-  el.setAttribute('class', attr.class);
-  if (element == 'input') {
-    el.setAttribute('placeholder', attr.placeholder);
-    el.setAttribute('type', attr.type);
-  }else if(element == 'img' || (attr.alt != undefined && attr.alt !="")) {
-    el.setAttribute('alt', attr.alt);
-  }
-  el.checked = attr.checked;
-  el.disabled = attr.disabled;
+  Object.keys(attr).forEach(at => {
+    if(at != 'onkeyup' && at != 'onclick' && at != 'content' && at != "" && at != undefined) {
+      el.setAttribute(at, attr[at]);
+  }});
+
   if(attr.onclick != undefined && attr.onclick != "") {
     el.addEventListener('click', (e)=>{
       if(attr.onclick.f != undefined)
@@ -111,8 +99,6 @@ export function createComponent(element, attr = attribut_type) {
       else (attr.onkeyup)();
     });
   }
-  if(attr.src != "" && attr.src != undefined) el.src = attr.src;
-  if(attr.style != "" && attr.style != undefined) el.setAttribute('style', attr.style);
   if (Array.isArray(attr.content)) {
     Array.from(attr.content).forEach(e => {
       el.appendChild(e);
