@@ -15,15 +15,31 @@ const attribut_type = {
   onclick: {f: undefined, a: undefined},
   orderly: false,
   onkeyup: {f: undefined, a: undefined},
-  style : ""
+  style : "",
+  alt: ""
 }
 
 export default function html_js(element, content) {
   let el = document.getElementById(element);
-  Array.from(content).forEach(c => {
-    c.id = count_elements(el.children);
-    el.appendChild(c);
-  })
+  if(el.id == content[0].id) {
+    el.innerHTML = '';
+    Array.from(content[0].childNodes).forEach(cn => {
+      el.appendChild(cn);
+    });
+    if(content[0].attributes != el.attributes) {
+      let attrContent = Array.from(content[0].attributes);
+      attrContent.forEach(a => {
+        if(el.attributes[a.nodeName] != a.nodeValue) {
+          el.setAttribute(a.nodeName, a.nodeValue);
+        }
+      })
+    }
+  }else {
+    Array.from(content).forEach(c => {
+      if(c.id == '' || c.id == undefined) c.id = count_elements(el.children);
+      el.appendChild(c);
+    });
+  }
 }
 function count_elements(v) {
   let ini = v[0];
@@ -64,6 +80,7 @@ export function updateElement(element, content={attribute: '', value: ''}) {
 }
 export function createComponent(element, attr = attribut_type) {
   var el = document.createElement(element);
+  
   if (attr.name != undefined) {
     el.setAttribute('name', attr.name);
   }
@@ -75,7 +92,7 @@ export function createComponent(element, attr = attribut_type) {
   if (element == 'input') {
     el.setAttribute('placeholder', attr.placeholder);
     el.setAttribute('type', attr.type);
-  }else if(element == 'img') {
+  }else if(element == 'img' || (attr.alt != undefined && attr.alt !="")) {
     el.setAttribute('alt', attr.alt);
   }
   el.checked = attr.checked;
@@ -94,8 +111,8 @@ export function createComponent(element, attr = attribut_type) {
       else (attr.onkeyup)();
     });
   }
-  if(attr.src!="") el.src = attr.src;
-  if(attr.style != "") el.setAttribute('style', attr.style);
+  if(attr.src != "" && attr.src != undefined) el.src = attr.src;
+  if(attr.style != "" && attr.style != undefined) el.setAttribute('style', attr.style);
   if (Array.isArray(attr.content)) {
     Array.from(attr.content).forEach(e => {
       el.appendChild(e);
