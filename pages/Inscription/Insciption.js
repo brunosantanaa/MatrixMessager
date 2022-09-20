@@ -1,8 +1,9 @@
-import { button, div, gotoPage, import_link, input, updateElement } from "../../src/html.js";
+import html_js, { button, div, gotoPage, import_link, input, updateElement } from "../../src/html.js";
 
 import Logo from "../../components/Logo/Logo.js";
 import { request } from "../../api.js";
 import Login from "../Login/Login.js";
+import PopUpMsg from "../../components/PopUpMsg/PopUpMsg.js";
 
 import_link('./pages/Inscription/inscription.css');
 
@@ -64,13 +65,19 @@ async function cadastre(value){
   req.name = document.getElementById('inscription_nom').value;
   var result = await request('POST', '/user/cadastre', req);  
   console.log(result);
-  gotoPage('root', Login());
+  if(result.error == undefined || result.error == "" ) {
+    gotoPage('root', Login());
+  } else {
+    html_js('PopUpMsg', [PopUpMsg({visible: true, message: result.error})]);
+  }
+  
 }
 function goHome(){
   gotoPage('root', Login());
 }
 export default function Inscription(){
   return(div({class: 'inscription-content', content: [
+    PopUpMsg({visible: false}),
     div({class: 'bt-return', content: '<i class="fa fa-arrow-left"></i>', onclick: goHome}),
     Logo({width: '150px'}),
     div({class: 'inscription-container', content: [

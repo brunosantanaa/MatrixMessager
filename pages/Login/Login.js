@@ -1,4 +1,4 @@
-import { div, input, import_link, p, button, gotoPage } from '../../src/html.js';
+import html_js, { div, input, import_link, p, button, gotoPage, updateElement } from '../../src/html.js';
 
 import_link('./pages/Login/login.css');
 
@@ -7,6 +7,7 @@ import { request } from "../../api.js";
 import Principal from '../Principal/Principal.js';
 import Inscription from '../Inscription/Insciption.js';
 import { setCookie } from '../../src/cookies.js';
+import PopUpMsg from '../../components/PopUpMsg/PopUpMsg.js';
 
 async function loginAction(){
   var email = document.getElementById('login').value;
@@ -15,6 +16,8 @@ async function loginAction(){
   if(resp.token) {
     setCookie("token", resp.token, 1);
     gotoPage('root', await Principal(resp));
+  }else {
+    html_js('PopUpMsg', [PopUpMsg({visible: true, message: resp.error})]);
   }
 }
 function inscriptionAction() {
@@ -26,6 +29,7 @@ export default function Login(props) {
       name: 'Login',
       class: 'container-login',
       content: [
+        PopUpMsg({visible: false}),
         Logo({width: '150px'}),
         input({type: 'text', placeholder:'Courriel', class: 'input-login', id: 'login'}),
         input({type: 'password', placeholder:'Mot de Passe', class: 'input-login', id: 'password'}),

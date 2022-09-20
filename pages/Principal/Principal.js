@@ -4,7 +4,8 @@ import Conversations from "../../components/Conversations/Conversations.js";
 import { div, gotoPage, import_link } from "../../src/html.js";
 import { request } from "../../api.js";
 import Login from "../Login/Login.js";
-import { getCookie } from "../../src/cookies.js";
+import PopUpMsg from "../../components/PopUpMsg/PopUpMsg.js";
+
 
 import_link('./pages/Principal/Principal.css');
 
@@ -24,6 +25,7 @@ export default async function Principal(props) {
     div({
       class: 'principal-container', 
       content: [
+        PopUpMsg({visible: false}),
         Conversations(content),
         await EnParlant(content.conversations[0]),  
       ]

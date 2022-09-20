@@ -6,7 +6,7 @@ import_link('./components/ListChats/listchats.css');
 export default function ListChats(props) {
   let msg = '';
   let dt = '';
-  if (msg.length > 0) {
+  if (props.messages != undefined && props.messages.length > 0) {
     msg = props.messages.at(-1).Content;
     dt = dateFormat(props.messages.at(-1).Date);
   }
