@@ -14,7 +14,6 @@ export default async function ConversationContainer(props) {
   props.forEach(m => {
     let who = (m.User == moi.UserID) ? 'moi' : '';
     m.who = who;
-    console.log(moi.UserID);
     content.push(Message(m));
   });
   return(

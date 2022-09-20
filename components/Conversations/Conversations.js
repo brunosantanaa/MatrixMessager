@@ -7,23 +7,21 @@ import ListChats from '../ListChats/ListChats.js';
 
 import_link('./components/Conversations/Conversations.css');
 async function exit(){
-  let teste = {token: getCookie("token")};
-  console.log(teste);
-  var resp = await request('POST', '/user/logout', teste);
+  var resp = await request('POST', '/user/logout', {token: getCookie("token")});
   if (resp.logout != undefined) {
     delCookie("token");
     gotoPage('root', Login());
   }  
 }
-function usersList() {
-  gotoPage('root', Users({token: getCookie("token")}));
+async function usersList() {
+  gotoPage('root', await Users({token: getCookie("token")}));
 }
 export default function Conversations(props) {
   let profil = (typeof props.profile === "undefined") ? './static/img/profil.png' : props.profile;
   let content = [
     div({class: 'conversations-header', content: [
       div({class: 'container-img', content: [
-        img({class: 'conversations-profile-picture', src: profil})
+        img({class: 'conversations-profile-picture', src: profil, alt: 'Moi'})
       ]}),
       div({class: 'conversations-bt conversations-users-list', content: '<i class="fa fa-users"></i>', onclick: usersList}),
       div({class: 'conversations-bt conversations-user-logout', content: '<i class="fa fa-sign-out"></i>', onclick: exit}),
