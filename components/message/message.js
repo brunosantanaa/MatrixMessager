@@ -5,7 +5,7 @@ import_link('./components/message/message.css');
 
 export default function Message(props){
   let rgbName=[];
-  for(let i=0; i < 3; i++) {
+  for(var i=0; i < 3; i++) {
     rgbName.push(props.name.charCodeAt(i));
   }
   rgbName[props.User % 3] = 255;

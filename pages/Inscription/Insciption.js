@@ -21,11 +21,17 @@ function class_not_valid(elementID, is_valid) {
   updateElement(elementID, {attribute: 'class', value: classEl})
 }
 
-function validation(element) {
+function validation(val) {
+  let element = val.value
   let el = document.getElementById(element);
   
   switch (element) {
-
+    case 'inscription_nom':
+      valid = el.value.trim().length > 3;
+      break;
+    case 'inscription_password':
+      valid = el.value.trim().length > 2;
+      break;
     case 'inscription_courriel':
       valid = (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(el.value));
       if (el.value == document.getElementById('inscription_conf_courriel').value) {

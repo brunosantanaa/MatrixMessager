@@ -23,6 +23,32 @@ async function loginAction(){
 function inscriptionAction() {
   gotoPage('root', Inscription());
 }
+let valid = false;
+function validation(v){
+  let elementID = v.value;
+  if(v.event.key == 'Enter') {
+    loginAction();
+    valid = false;
+  }
+  let el = document.getElementById(elementID);
+  switch (elementID) {
+    case 'password':
+      valid = el.value.trim().length > 2;
+      break;
+    case 'login':
+      valid = (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(el.value));
+      break;
+    default:
+      valid = !(el.value.trim().length === 0);
+      break;
+  }
+  if (
+    valid && (
+      document.getElementById('login').value.trim().length === 0 ||
+      document.getElementById('password').value.trim().length === 0)
+  ) valid = false;
+  updateElement('login-bt-login', {attribute: 'disabled', value: !valid}); 
+}
 export default function Login(props) {
   return (
     div({
@@ -31,12 +57,12 @@ export default function Login(props) {
       content: [
         PopUpMsg({visible: false}),
         Logo({width: '150px'}),
-        input({type: 'text', placeholder:'Courriel', class: 'input-login', id: 'login'}),
-        input({type: 'password', placeholder:'Mot de Passe', class: 'input-login', id: 'password'}),
+        input({type: 'text', placeholder:'Courriel', class: 'input-login', id: 'login', onkeyup: {f: validation, a: 'login'}}),
+        input({type: 'password', placeholder:'Mot de Passe', class: 'input-login', id: 'password', onkeyup: {f: validation, a: 'password'}}),
         p({content: '', class: 'msg-validation-login'}),
         div({class: 'login-bts-container', content: [
           div({class: 'login-bt-cadastre', content: "S'inscrire", onclick: inscriptionAction}),
-          button({content: 'Entrer', class: 'button-login', onclick: loginAction})
+          button({id: 'login-bt-login', content: 'Entrer', class: 'button-login', onclick: loginAction, disabled: !valid})
         ]})
         
       ]

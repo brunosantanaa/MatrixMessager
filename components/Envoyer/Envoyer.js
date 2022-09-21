@@ -7,6 +7,17 @@ import ConversationContainer from "../ConversationContainer/ConversationContaine
 import Login from "../../pages/Login/Login.js";
 
 import_link('./components/Envoyer/Envoyer.css');
+let valid = false;
+function validation(v){
+  let elementID = v.value;
+  let el= document.getElementById(elementID).value
+  valid = el.length <= 0;
+  if(v.event.key == 'Enter') {
+    send();
+    valid = false;
+  }
+  updateElement(elementID, {attribute: 'disabled', value: !valid});
+}
 async function send(){
   let elInput = document.getElementById('envoyer-message')
   let inputText = elInput.value;
@@ -29,8 +40,13 @@ export default function Envoyer() {
     div({
       class: 'envoyer-container',
       content: [
-        input({id: 'envoyer-message', type: 'text', class: 'envoyer-input', maxlength: 150, placeholder: 'Taper un Message'}),
-        button({class: 'envoyer-button', content: '<i class="fa fa-paper-plane"></i>', onclick: send})
+        input({id: 'envoyer-message', type: 'text', class: 'envoyer-input', 
+        maxlength: 150, placeholder: 'Taper un Message',
+        onkeyup: {f: validation, a: 'envoyer-button'}}),
+        button({
+          id: 'envoyer-button',
+          class: 'envoyer-button', content: '<i class="fa fa-paper-plane"></i>', 
+          onclick: send, disabled: !valid})
       ]
     })
   )  
