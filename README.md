@@ -16,7 +16,7 @@ Cette page est pour le côté client.
 ![Register](./static/Captures/register.png)
 ![Chat](./static/Captures/chat.png)
 ![Users List](./static/Captures/userslist.png)
-
+![Send Message](./static/Captures/SendMessage.gif)
 ## Exigences du projet
 
 ### Projet de session
