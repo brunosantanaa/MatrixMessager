@@ -95,7 +95,7 @@ export function createComponent(element, attr = attribut_type) {
   if(attr.onkeyup != undefined && attr.onkeyup != "") {
     el.addEventListener('keyup', (e)=>{
       if(attr.onkeyup.f != undefined)
-        (attr.onkeyup.f)(attr.onkeyup.a)
+        (attr.onkeyup.f)({value: attr.onkeyup.a, event: e})
       else (attr.onkeyup)();
     });
   }
