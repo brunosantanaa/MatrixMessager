@@ -5,7 +5,7 @@ import { div, gotoPage, import_link } from "../../src/html.js";
 import { request } from "../../api.js";
 import Login from "../Login/Login.js";
 import PopUpMsg from "../../components/PopUpMsg/PopUpMsg.js";
-
+import verifyMsg from "../../socket.js";
 
 import_link('./pages/Principal/Principal.css');
 
@@ -17,8 +17,8 @@ async function validate(req) {
     gotoPage('root',Login());
   }
 }
-
 export default async function Principal(props) {
+  verifyMsg();
   let content = {};
   content.conversations = await validate(props);
   return(
