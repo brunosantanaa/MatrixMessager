@@ -10,6 +10,13 @@ Cette page est pour le côté client.
 
 [Github - MatrixMessagerBack](https://github.com/brunosantanaa/MatrixMessagerBack)
 
+## Captures d'écran
+
+![Login](./static/Captures/login.png)
+![Register](./static/Captures/register.png)
+![Chat](./static/Captures/chat.png)
+![Users List](./static/Captures/userslist.png)
+
 ## Exigences du projet
 
 ### Projet de session
