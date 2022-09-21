@@ -18,6 +18,7 @@ export default async function ConversationContainer(props) {
   });
   return(
     div({
+      id: 'ConversationContainer',
       class: 'conversationcontainer-principal',
       content: content
     })
