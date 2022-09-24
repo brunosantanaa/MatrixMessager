@@ -10,6 +10,10 @@ Cette page est pour le côté client.
 
 [Github - MatrixMessagerBack](https://github.com/brunosantanaa/MatrixMessagerBack)
 
+## Installation
+
+Utilise pour cette projet un serveur web, comment dans ce projet on utilise les modules JS, il faut installé en utilisant quelque serveur web, dans le cas où vous utilisez l'apache avec xampp, vous pouvez faire le clone du projet dans le dossier htdocs.
+
 ## Captures d'écran
 
 ![Login](./static/Captures/login.png)
